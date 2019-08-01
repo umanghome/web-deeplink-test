@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>Test</title>
+  </head>
+  <body>
+    <a href="#" id="anchor">Click me to go to the app</a>
+    <br />
+    <textarea id="code" cols="30" rows="10">
+      <html>
+      
+      <head>Popup</head>
+      
+      <body>
+        <h1 id="message">Loading..</h1>
+      
+        <form action="https://twitter.com/umanghome/status/969489907809832960"></form>
+      
+        <script>
+          setTimeout(() => {
+            document.forms[0].submit();
+          }, 100);
+        </script>
+
+        <script>
+          let seconds = 0;
+          const messageElem = document.getElementById('message');
+
+          setInterval(() => {
+            seconds++;
+
+            message.innerText = `${seconds} seconds have passed`
+          }, 1000);
+        </script>
+      </body>
+      
+      </html>
+    </textarea>
+
+    <script>
+      const anchor = document.getElementById('anchor');
+
+      anchor.addEventListener('click', e => {
+        e.preventDefault();
+        const popup = window.open();
+        const html = document.getElementById('code').value;
+
+        popup.window.document.write(html);
+      });
+    </script>
+  </body>
+</html>
