@@ -1,0 +1,30 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <title>Popup</title>
+</head>
+
+<body>
+  <h1 id="message">Loading..</h1>
+
+  <a href="https://twitter.com/Twitter/status/1154398481714466816" id="link">Link</a>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById('link').click();
+    }, 100);
+  </script>
+
+  <script>
+    let seconds = 0;
+    const messageElem = document.getElementById('message');
+
+    setInterval(() => {
+      seconds++;
+
+      message.innerText = `${seconds} seconds have passed`
+    }, 1000);
+  </script>
+</body>
+
+</html>

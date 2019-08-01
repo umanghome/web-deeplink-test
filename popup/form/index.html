@@ -1,0 +1,46 @@
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <title>Test</title>
+</head>
+
+<body>
+  <a href="#" id="anchor">Click me to go to the app</a>
+  <br />
+  <textarea id="code" cols="30" rows="10"></textarea>
+
+  <script>
+    const anchor = document.getElementById('anchor');
+    const textarea = document.getElementById('code')
+
+    fetch('/redirect/form')
+      .then(page => {
+        return page.body.getReader().read();
+      })
+      .then(page => {
+        textarea.value = String.fromCharCode.apply(null, page.value);
+      });
+
+    anchor.addEventListener('click', e => {
+      e.preventDefault();
+      const popup = window.open();
+      const html = textarea.value;
+
+      popup.window.document.write(html);
+
+      const check = setInterval(() => {
+        console.log({
+          closed: popup.closed
+        });
+
+        if (popup.closed) {
+          alert('Popup was closed!');
+          clearInterval(check);
+        }
+      }, 100);
+    });
+  </script>
+</body>
+
+</html>
