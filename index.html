@@ -46,6 +46,17 @@
         const html = document.getElementById('code').value;
 
         popup.window.document.write(html);
+
+        const check = setInterval(() => {
+          console.log({
+            closed: popup.closed
+          });
+
+          if (popup.closed) {
+            alert('Popup was closed!');
+            clearInterval(check);
+          }
+        }, 100);
       });
     </script>
   </body>
