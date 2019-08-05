@@ -1,0 +1,35 @@
+<html>
+  <head>Polling page</head>
+
+  <body>
+    <h3 id="message">Please wait..</h3>
+
+    <form action="intermediate.html"></form>
+
+    <script>
+      const message = document.getElementById('message');
+
+      function redirect () {
+        message.innerText = 'Redirecting..';
+        document.forms[0].submit();
+      }
+
+      function startPolling () {
+        message.innerText = 'Checking payment status..';
+      }
+    </script>
+
+    <script>
+      setTimeout(() => {
+        const fromLocal = localStorage.getItem('pid');
+
+        if (!fromLocal) {
+          redirect();
+        } else {
+          localStorage.removeItem('pid');
+          startPolling();
+        }
+      }, 100);
+    </script>
+  </body>
+</html>
