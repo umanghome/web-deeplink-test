@@ -14,7 +14,7 @@
     const anchor = document.getElementById('anchor');
     const textarea = document.getElementById('code')
 
-    fetch('/redirect/form')
+    fetch('../../redirect/form')
       .then(page => {
         return page.body.getReader().read();
       })
